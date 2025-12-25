@@ -1,9 +1,10 @@
 MOS API Test Tool
 
 概要
+
     本ツールは、MOS が提供する注文API（getOrders / updateStatus）に対して、
     API仕様どおりに実装されているかを検証するためのテストツールです。
-
+    
     主に以下の観点で検証を行います。
     ・リクエスト／レスポンスの スキーマ検証
     ・入力条件（customerId、日時、billStatus 等）の 仕様準拠確認
@@ -11,17 +12,20 @@ MOS API Test Tool
     ・注文ハッシュ（SHA-256）の 再計算チェック
     ・代表的なケースをまとめた スモークテスト
 
-    本ツールは、MOS開発者・レジ開発者の双方が共通理解を持つための検証用ツールとして利用することを想定しています。
+本ツールは、MOS開発者・レジ開発者の双方が共通理解を持つための検証用ツールとして利用することを想定しています。
 
 対象API
+
     ・getOrders
     ・updateStatus
 
 前提条件
+
     ・Python 3.10 以上
     ・HTTP通信
 
 インストール
+
     1. リポジトリの取得
         git clone <repository-url>
         cd mos-api-test-tool
@@ -39,6 +43,7 @@ MOS API Test Tool
         pip install -e .
 
 環境変数
+
     変数名	         説明	                デフォルト
     MOS_BASE_URL	MOS API のベースURL	    http://localhost:8080
 
@@ -46,6 +51,7 @@ MOS API Test Tool
     $env:MOS_BASE_URL="http://127.0.0.1:8000"
 
 使い方（CLI）
+
     getOrders
         mos-test getOrders \
         --from 2025-11-24T19:00:00 \
@@ -108,5 +114,6 @@ MOS API Test Tool
                 ・categoryId は ハッシュ対象外
 
 最後に
+
     本ツールは、「仕様書に書かれた内容が実装で守られているか」 を機械的に検証することを目的としています。
     仕様・実装・テストの認識を揃えるための補助ツールとしてご利用ください。
