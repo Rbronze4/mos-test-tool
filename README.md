@@ -85,36 +85,38 @@ MOS API Test Tool
         ・エラーコード検証
         ・billStatus ビットマスク検証
 
-    検証内容の詳細
-        1. スキーマ検証
-            ・必須項目の存在確認
-            ・データ型チェック
-            ・正規表現チェック
-                ・customerId：^[A-Z]{2}[0-9]{4}$
-                ・menuId：^[FD][0-9]{3}$
-                ・hash：16進数64桁（小文字）
+検証内容の詳細
+    
+    1. スキーマ検証
+        ・必須項目の存在確認
+        ・データ型チェック
+        ・正規表現チェック
+            ・customerId：^[A-Z]{2}[0-9]{4}$
+            ・menuId：^[FD][0-9]{3}$
+            ・hash：16進数64桁（小文字）
 
-        2. 条件検証
-            ・customerId 指定時は 最大1件のみ返却
-            ・billStatus 指定時は ビットマスクによるフィルタ
-            ・from/to による日時範囲チェック
+    2. 条件検証
+        ・customerId 指定時は 最大1件のみ返却
+        ・billStatus 指定時は ビットマスクによるフィルタ
+        ・from/to による日時範囲チェック
 
-        3. ハッシュ検証
-            MOS が返却する hash について、
-            テストツール側で 仕様に基づき再計算を行い、一致することを確認します。
-            ハッシュ仕様（v1）
-                ・SHA-256（hex 小文字）
-                ・カノニカル文字列形式：
-                    v1|storeNo|customerId|entryTime|itemsJoined
-                ・items は以下のキーでソート：
-                ・orderTime
-                ・menuId
-                ・unitPrice
-                ・orderQty
-                ・categoryId は ハッシュ対象外
+    3. ハッシュ検証
+        MOS が返却する hash について、
+        テストツール側で 仕様に基づき再計算を行い、一致することを確認します。
+        ハッシュ仕様（v1）
+            ・SHA-256（hex 小文字）
+            ・カノニカル文字列形式：
+                v1|storeNo|customerId|entryTime|itemsJoined
+            ・items は以下のキーでソート：
+            ・orderTime
+            ・menuId
+            ・unitPrice
+            ・orderQty
+            ・categoryId は ハッシュ対象外
 
 最後に
 
     本ツールは、「仕様書に書かれた内容が実装で守られているか」 を機械的に検証することを目的としています。
     仕様・実装・テストの認識を揃えるための補助ツールとしてご利用ください。
+
 
